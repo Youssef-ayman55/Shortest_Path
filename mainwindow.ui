@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>237</green>
+        <blue>235</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>237</green>
+        <blue>235</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>237</green>
+        <blue>235</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>237</green>
+        <blue>235</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>255</x>
+      <y>70</y>
+      <width>692</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bauhaus 93</family>
+      <pointsize>72</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:  rgb(60, 54, 51);</string>
+    </property>
+    <property name="text">
+     <string>Shortest Path</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add_city">
+    <property name="geometry">
+     <rect>
+      <x>269</x>
+      <y>290</y>
+      <width>662</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bauhaus 93</family>
+      <pointsize>-1</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> background-color: rgb(224, 204, 190);
+    border-style: solid;
+    color:  rgb(60, 54, 51);
+    border-width: 5px;
+    border-radius: 20px;
+    border-color: rgb(116, 114, 100);
+    font: 48px;
+    padding: 6px;
+</string>
+    </property>
+    <property name="text">
+     <string>Add City</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="find_path">
+    <property name="geometry">
+     <rect>
+      <x>269</x>
+      <y>620</y>
+      <width>662</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bauhaus 93</family>
+      <pointsize>-1</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> background-color: rgb(224, 204, 190);
+    border-style: solid;
+    color:  rgb(60, 54, 51);
+    border-width: 5px;
+    border-radius: 20px;
+    border-color: rgb(116, 114, 100);
+    font: 48px;
+    padding: 6px;
+</string>
+    </property>
+    <property name="text">
+     <string>Find Path</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="delete_city">
+    <property name="geometry">
+     <rect>
+      <x>269</x>
+      <y>400</y>
+      <width>662</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bauhaus 93</family>
+      <pointsize>-1</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> background-color: rgb(224, 204, 190);
+    border-style: solid;
+    color:  rgb(60, 54, 51);
+    border-width: 5px;
+    border-radius: 20px;
+    border-color: rgb(116, 114, 100);
+    font: 48px;
+    padding: 6px;
+</string>
+    </property>
+    <property name="text">
+     <string>Delete City</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="display_graph">
+    <property name="geometry">
+     <rect>
+      <x>269</x>
+      <y>510</y>
+      <width>662</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bauhaus 93</family>
+      <pointsize>-1</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"> background-color: rgb(224, 204, 190);
+    border-style: solid;
+    color:  rgb(60, 54, 51);
+    border-width: 5px;
+    border-radius: 20px;
+    border-color: rgb(116, 114, 100);
+    font: 48px;
+    padding: 6px;
+</string>
+    </property>
+    <property name="text">
+     <string>Display Graph</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
