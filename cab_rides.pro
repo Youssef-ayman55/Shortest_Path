@@ -13,6 +13,7 @@ SOURCES += \
     delete_city.cpp \
     display_graph.cpp \
     find_path.cpp \
+    graph.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -21,6 +22,7 @@ HEADERS += \
     delete_city.h \
     display_graph.h \
     find_path.h \
+    graph.h \
     mainwindow.h
 
 FORMS += \
