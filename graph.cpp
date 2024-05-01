@@ -12,7 +12,7 @@ bool graph::exists(QString name){
 }
 void graph::addcity(QString name){
     if(!exists(name)){
-        my_graph[name]=new QVector<QPair<QString,int>>;
+        my_graph[name]=new QVector<QPair<QString,double>>;
     }
 }
 void graph::dcity(QString name){
@@ -20,7 +20,7 @@ void graph::dcity(QString name){
         my_graph.erase(my_graph.find(name));
     }
 }
-void graph::connectcities(QString name1, QString name2, int weight){
+void graph::connectcities(QString name1, QString name2, double weight){
     if(!exists(name1) || !exists(name2)){
         //
         return;
@@ -38,4 +38,26 @@ QVector<QString>* graph::findpath(QString src, QString des){
         //here
         return answer;
     }
+    else return nullptr;
+}
+double graph::getweight(QString name1, QString name2)
+{
+    double distance = -1;
+    if(my_graph[name1]->size() > my_graph[name2]->size()){
+        for(int i = 0; i< my_graph[name2]->size(); i++){
+            if(my_graph[name2]->at(i).first == name1){
+                distance = my_graph[name2]->at(i).second;
+                break;
+            }
+        }
+    }
+    else{
+        for(int i = 0; i< my_graph[name1]->size(); i++){
+            if(my_graph[name1]->at(i).first == name2){
+                distance = my_graph[name1]->at(i).second;
+                break;
+            }
+        }
+    }
+    return distance;
 }

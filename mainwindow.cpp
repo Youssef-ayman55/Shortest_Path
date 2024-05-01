@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    graph_w = new graph;
 }
 
 MainWindow::~MainWindow()
@@ -20,7 +21,7 @@ void MainWindow::reset()
 
 void MainWindow::on_add_city_clicked()
 {
-    add_city_w = new add_city;
+    add_city_w = new add_city(graph_w);
     setCentralWidget(add_city_w);
     QObject::connect(add_city_w,&add_city::back,this,&MainWindow::reset);
 }

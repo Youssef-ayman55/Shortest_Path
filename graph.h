@@ -14,12 +14,13 @@ public:
 class graph
 {
 public:
-    QMap<QString,QVector<QPair<QString,int>>*> my_graph;
+    QMap<QString,QVector<QPair<QString,double>>*> my_graph;
     graph();
     bool exists(QString name);
     void addcity(QString name);
     void dcity(QString name);
-    void connectcities(QString name1, QString name2, int weight);
+    double getweight(QString name1, QString name2);
+    void connectcities(QString name1, QString name2, double weight);
     QVector<QString>* findpath(QString src, QString des);
 };
 
