@@ -53,6 +53,14 @@ void add_city::on_connect_clicked()
         return;
     }
     double distance = distanc.toDouble();
+    if(name1==name2){
+        ui->connect_warning->setText("Cities Should Be Different.");
+        return;
+    }
+    if(distance<0){
+        ui->connect_warning->setText("Distance Can Not Be Negative!");
+        return;
+    }
     if(!graph_w->exists(name1) || !graph_w->exists(name2)){
         ui->connect_warning->setText("One Of The Cities Was Not Added!");
     }

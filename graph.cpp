@@ -2,8 +2,16 @@
 #include <QString>
 #include <QVector>
 #include <QMap>
+#include <QFile>
+#include <QTextStream>
 #include <QPair>
-graph::graph() {}
+graph::graph() {
+    //QFile file();
+    /*if(!file.open(QFile::ReadOnly | QFile::Text)){
+        exit(1);
+    }*/
+
+}
 bool graph::exists(QString name){
     if(my_graph.find(name)==my_graph.end()){
         return false;
@@ -17,6 +25,16 @@ void graph::addcity(QString name){
 }
 void graph::dcity(QString name){
     if(exists(name)){
+        for(int i=0; i<my_graph[name]->size(); i++){
+            QString temp= my_graph[name]->at(i).first;
+            for(int j=0; j<my_graph[temp]->size(); j++){
+                if(my_graph[temp]->at(j).first==name){
+                    my_graph[temp]->erase(my_graph[temp]->begin()+i);
+                    break;
+                }
+            }
+        }
+        delete my_graph[name];
         my_graph.erase(my_graph.find(name));
     }
 }

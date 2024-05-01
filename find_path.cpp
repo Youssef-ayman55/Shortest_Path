@@ -7,6 +7,10 @@ find_path::find_path(QWidget *parent)
 {
     ui->setupUi(this);
 }
+find_path::find_path(graph * graph_w): graph_w(graph_w), QWidget(nullptr), ui(new Ui::find_path)
+{
+    ui->setupUi(this);
+}
 
 find_path::~find_path()
 {

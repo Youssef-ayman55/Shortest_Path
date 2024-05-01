@@ -2,7 +2,7 @@
 #define ADD_CITY_H
 
 #include <QWidget>
-#include <graph.h>
+#include "graph.h"
 namespace Ui {
 class add_city;
 }

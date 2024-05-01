@@ -7,6 +7,11 @@ display_graph::display_graph(QWidget *parent)
 {
     ui->setupUi(this);
 }
+display_graph::display_graph(graph * graph_w): graph_w(graph_w), QWidget(nullptr), ui(new Ui::display_graph)
+{
+    ui->setupUi(this);
+
+}
 
 display_graph::~display_graph()
 {

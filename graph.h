@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QMap>
 #include <QPair>
+#include <QFile>
+#include <QTextStream>
 #include <QGraphicsEllipseItem>
 class Node : public QObject, public QGraphicsEllipseItem{
     Q_OBJECT
@@ -22,6 +24,7 @@ public:
     double getweight(QString name1, QString name2);
     void connectcities(QString name1, QString name2, double weight);
     QVector<QString>* findpath(QString src, QString des);
+    QFile data;
 };
 
 #endif // GRAPH_H
