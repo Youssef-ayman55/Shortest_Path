@@ -5,6 +5,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <QPair>
+#include <QQueue>
+#include <algorithm>
 graph::graph() {
     //QFile file();
     /*if(!file.open(QFile::ReadOnly | QFile::Text)){
@@ -48,12 +50,51 @@ void graph::connectcities(QString name1, QString name2, double weight){
 }
 QVector<QString>* graph::findpath(QString src, QString des){
     if(exists(src) && exists(des)){
-        QVector<QString>* answer=new QVector<QString>;
-        answer->push_back(src);
-        //implement
-        //dijkstra
-        //algorithm
-        //here
+        QMap<QString, QPair<double, QString>> temp;
+        QMap<QString, bool> visited;
+        QQueue<QString> toVisit;
+        auto it = my_graph.begin();
+        while(it != my_graph.end()){
+            QPair<int, QString> tempPair(INT_MAX, src);
+            if(it.key() == src)
+                tempPair.first = 0;
+            temp[it.key()] = tempPair;
+            visited[it.key()] = false;
+            it++;
+        }
+        toVisit.append(src);
+        while(!toVisit.isEmpty()){
+            if(visited[toVisit.front()]){
+                toVisit.pop_front();
+                continue;
+            }
+            for(int i = 0; i < my_graph[toVisit.front()]->size(); i++){
+
+                toVisit.append(my_graph[toVisit.front()]->at(i).first);
+                double distance = my_graph[toVisit.front()]->at(i).second
+                    + temp[toVisit.front()].first;
+                if(distance < temp[my_graph[toVisit.front()]->at(i).first].first){
+                    temp[my_graph[toVisit.front()]->at(i).first].first = distance;
+                    temp[my_graph[toVisit.front()]->at(i).first].second = toVisit.front();
+                }
+
+            }
+            visited[toVisit.front()] = true;
+            toVisit.pop_front();
+        }
+        QVector<QString>* answer;
+        bool checker = true;
+        QString current = des;
+        while(checker){
+            answer->push_back(current);
+            current = temp[current].second;
+            if(current ==    src){
+                checker = false;
+                answer->push_back(current);
+            }
+        }
+
+        std::reverse(answer->begin(), answer->end());
         return answer;
     }
     else return nullptr;
