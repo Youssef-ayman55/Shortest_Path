@@ -1,8 +1,12 @@
 #ifndef DISPLAY_GRAPH_H
 #define DISPLAY_GRAPH_H
-
 #include <QWidget>
 #include "graph.h"
+#include <QGridLayout>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QVector>
+#include "node_display.h"
 namespace Ui {
 class display_graph;
 }
@@ -22,6 +26,11 @@ private slots:
 private:
     Ui::display_graph *ui;
     graph * graph_w;
+    QGridLayout* layout;
+    QGraphicsScene * scene;
+    QGraphicsView * view;
+    QVector<node_display*> * vector;
+
 };
 
 #endif // DISPLAY_GRAPH_H

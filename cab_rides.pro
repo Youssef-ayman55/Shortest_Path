@@ -15,7 +15,8 @@ SOURCES += \
     find_path.cpp \
     graph.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    node_display.cpp
 
 HEADERS += \
     add_city.h \
@@ -23,7 +24,8 @@ HEADERS += \
     display_graph.h \
     find_path.h \
     graph.h \
-    mainwindow.h
+    mainwindow.h \
+    node_display.h
 
 FORMS += \
     add_city.ui \
