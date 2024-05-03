@@ -19,6 +19,8 @@ signals:
     void back();
 private slots:
     void on_back_to_main_clicked();
+    void on_find_clicked();
+
 private:
     Ui::find_path *ui;
     graph * graph_w;

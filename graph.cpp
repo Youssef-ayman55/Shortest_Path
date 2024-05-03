@@ -7,6 +7,7 @@
 #include <QPair>
 #include <QQueue>
 #include <algorithm>
+#include <QDebug>
 graph::graph() {
     //QFile file();
     /*if(!file.open(QFile::ReadOnly | QFile::Text)){
@@ -49,7 +50,7 @@ void graph::connectcities(QString name1, QString name2, double weight){
     my_graph[name2]->push_back(std::make_pair(name1,weight));
 }
 QVector<QString>* graph::findpath(QString src, QString des){
-    if(exists(src) && exists(des)){
+    /*if(exists(src) && exists(des)){
         QMap<QString, QPair<double, QString>> temp;
         QMap<QString, bool> visited;
         QQueue<QString> toVisit;
@@ -98,6 +99,45 @@ QVector<QString>* graph::findpath(QString src, QString des){
         return answer;
     }
     else return nullptr;
+    */
+    if(exists(src) && exists(des)){
+        QMap<QString,double> distance;
+        auto it = my_graph.begin();
+        while(it != my_graph.end()){
+            distance[it.key()]=INT_MAX;
+            it++;
+        }
+        QVector<QPair<double,QString>> q;
+        QMap<QString,QString> prev;
+        distance[src]=0;
+        q.push_back({0,src});
+        while(!q.empty()){
+            QPair<double,QString> start=q.front();
+            for(int i=0; i<my_graph[start.second]->size(); i++){
+                QPair<QString ,double> temp=my_graph[start.second]->at(i);
+                if(temp.second+distance[start.second]>distance[temp.first]){
+                    distance[temp.first]=temp.second+distance[start.second];
+                    q.push_back({distance[temp.first],temp.first});
+                    prev[temp.first]=start.second;
+                }
+            }
+            q.pop_front();
+            std::sort(q.begin(),q.end());
+        }
+        // There is a problem hereeee
+        QVector<QString>* answer= new QVector<QString>;
+        QString current = des;
+        while(prev[current]!=src){
+            answer->push_back(current);
+            current = prev[current];
+        }
+        answer->push_back(current);
+        qDebug ("Loop terminated");
+        std::reverse(answer->begin(), answer->end());
+        qDebug ("Loop terminated");
+        return answer;
+    }else return nullptr;
+
 }
 double graph::getweight(QString name1, QString name2)
 {
