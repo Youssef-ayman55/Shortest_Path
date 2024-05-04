@@ -31,17 +31,13 @@ void find_path::on_find_clicked()
     QVector<QString>* answer= graph_w->findpath(src,des);
     if(answer==nullptr){
         ui->find_warn->setText("There is no way to reach this city.");
+        ui->dist->setText(QString("???"));
     }else{
-        /*
         double distance=0;
-        QVector<QString>* answer= graph_w->findpath(src,des);
-        auto it =answer->begin();
-        while(1){
-            if(it+1==answer->end())break;
-            distance+=graph_w->getweight(*it,*(it+1));
+        for(int i = 0; i < answer->size() - 1; i++){
+            distance += graph_w->getweight(answer->at(i), answer->at(i+1));
         }
         ui->dist->setText(QString::number(distance));
-        */
     }
 }
 

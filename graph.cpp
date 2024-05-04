@@ -7,6 +7,7 @@
 #include <QPair>
 #include <QQueue>
 #include <algorithm>
+#include <iostream>
 #include <QDebug>
 graph::graph() {
     //QFile file();
@@ -50,17 +51,18 @@ void graph::connectcities(QString name1, QString name2, double weight){
     my_graph[name2]->push_back(std::make_pair(name1,weight));
 }
 QVector<QString>* graph::findpath(QString src, QString des){
-    /*if(exists(src) && exists(des)){
+    if(exists(src) && exists(des)){
         QMap<QString, QPair<double, QString>> temp;
         QMap<QString, bool> visited;
         QQueue<QString> toVisit;
         auto it = my_graph.begin();
         while(it != my_graph.end()){
-            QPair<int, QString> tempPair(INT_MAX, src);
-            if(it.key() == src)
-                tempPair.first = 0;
-            temp[it.key()] = tempPair;
+            QPair<double, QString> tempPair(-1, src);
             visited[it.key()] = false;
+            if(it.key() == src){
+                tempPair.first = 0;
+            }
+            temp[it.key()] = tempPair;
             it++;
         }
         toVisit.append(src);
@@ -70,26 +72,25 @@ QVector<QString>* graph::findpath(QString src, QString des){
                 continue;
             }
             for(int i = 0; i < my_graph[toVisit.front()]->size(); i++){
-
                 toVisit.append(my_graph[toVisit.front()]->at(i).first);
                 double distance = my_graph[toVisit.front()]->at(i).second
                     + temp[toVisit.front()].first;
-                if(distance < temp[my_graph[toVisit.front()]->at(i).first].first){
+                if(temp[my_graph[toVisit.front()]->at(i).first].first == -1||distance < temp[my_graph[toVisit.front()]->at(i).first].first){
                     temp[my_graph[toVisit.front()]->at(i).first].first = distance;
                     temp[my_graph[toVisit.front()]->at(i).first].second = toVisit.front();
                 }
-
             }
             visited[toVisit.front()] = true;
             toVisit.pop_front();
         }
-        QVector<QString>* answer;
+        if(!visited[des]) return nullptr;
+        QVector<QString>* answer = new QVector<QString>;
         bool checker = true;
         QString current = des;
         while(checker){
             answer->push_back(current);
             current = temp[current].second;
-            if(current ==    src){
+            if(current == src){
                 checker = false;
                 answer->push_back(current);
             }
@@ -99,44 +100,6 @@ QVector<QString>* graph::findpath(QString src, QString des){
         return answer;
     }
     else return nullptr;
-    */
-    if(exists(src) && exists(des)){
-        QMap<QString,double> distance;
-        auto it = my_graph.begin();
-        while(it != my_graph.end()){
-            distance[it.key()]=INT_MAX;
-            it++;
-        }
-        QVector<QPair<double,QString>> q;
-        QMap<QString,QString> prev;
-        distance[src]=0;
-        q.push_back({0,src});
-        while(!q.empty()){
-            QPair<double,QString> start=q.front();
-            for(int i=0; i<my_graph[start.second]->size(); i++){
-                QPair<QString ,double> temp=my_graph[start.second]->at(i);
-                if(temp.second+distance[start.second]>distance[temp.first]){
-                    distance[temp.first]=temp.second+distance[start.second];
-                    q.push_back({distance[temp.first],temp.first});
-                    prev[temp.first]=start.second;
-                }
-            }
-            q.pop_front();
-            std::sort(q.begin(),q.end());
-        }
-        // There is a problem hereeee
-        QVector<QString>* answer= new QVector<QString>;
-        QString current = des;
-        while(prev[current]!=src){
-            answer->push_back(current);
-            current = prev[current];
-        }
-        answer->push_back(current);
-        qDebug ("Loop terminated");
-        std::reverse(answer->begin(), answer->end());
-        qDebug ("Loop terminated");
-        return answer;
-    }else return nullptr;
 
 }
 double graph::getweight(QString name1, QString name2)
