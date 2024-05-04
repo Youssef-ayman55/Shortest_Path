@@ -7,8 +7,6 @@
 #include <QPair>
 #include <QQueue>
 #include <algorithm>
-#include <iostream>
-#include <QDebug>
 graph::graph() {
     //QFile file();
     /*if(!file.open(QFile::ReadOnly | QFile::Text)){
@@ -33,7 +31,7 @@ void graph::dcity(QString name){
             QString temp= my_graph[name]->at(i).first;
             for(int j=0; j<my_graph[temp]->size(); j++){
                 if(my_graph[temp]->at(j).first==name){
-                    my_graph[temp]->erase(my_graph[temp]->begin()+i);
+                    my_graph[temp]->erase(my_graph[temp]->begin()+j);
                     break;
                 }
             }

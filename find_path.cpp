@@ -1,6 +1,6 @@
 #include "find_path.h"
 #include "ui_find_path.h"
-
+#include <QString>
 find_path::find_path(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::find_path)
@@ -33,11 +33,17 @@ void find_path::on_find_clicked()
         ui->find_warn->setText("There is no way to reach this city.");
         ui->dist->setText(QString("???"));
     }else{
+        QString warning = "";
         double distance=0;
         for(int i = 0; i < answer->size() - 1; i++){
             distance += graph_w->getweight(answer->at(i), answer->at(i+1));
+            warning.append(answer->at(i));
+            warning.append(QString ("->"));
         }
+        warning.append(answer->at(answer->size() - 1));
         ui->dist->setText(QString::number(distance));
+        ui->path->setText(warning);
+         ui->find_warn->setText("Path found");
     }
 }
 
