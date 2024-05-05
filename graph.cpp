@@ -7,7 +7,6 @@
 #include <QPair>
 #include <QQueue>
 #include <algorithm>
-#include <iostream>
 graph::graph() {
     QFile nodesfile(":/files/nodes.txt");
     if (nodesfile.open(QIODevice::ReadOnly))

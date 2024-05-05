@@ -3,17 +3,26 @@
 #include<QVector>
 #include<QGraphicsEllipseItem>
 #include<QGraphicsTextItem>
+#include <graph.h>
 class node_display: public QObject, public QGraphicsEllipseItem
 {
     Q_OBJECT
 public:
-    node_display();
+    node_display(graph * a);
+    ~node_display();
     double xv;
     double yv;
-    QVector<node_display *>connections;
-    void connect(node_display * x);
+    int radius;
+    double phase;
+    QVector<node_display *>repels;
+    void repel(node_display * x);
     QGraphicsTextItem * name;
     void setText(QString name);
+    node_display * parent;
+    QString na;
+    QGraphicsTextItem * weight_with_parent;
+    graph * graph_w;
+    int stationary_count;
 public slots:
     void move();
 };
