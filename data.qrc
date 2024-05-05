@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/files">
+        <file>nodes.txt</file>
+        <file>connections.txt</file>
+    </qresource>
+</RCC>

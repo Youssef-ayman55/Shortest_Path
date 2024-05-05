@@ -7,12 +7,38 @@
 #include <QPair>
 #include <QQueue>
 #include <algorithm>
+#include <iostream>
 graph::graph() {
-    //QFile file();
-    /*if(!file.open(QFile::ReadOnly | QFile::Text)){
-        exit(1);
-    }*/
-
+    QFile nodesfile(":/files/nodes.txt");
+    if (nodesfile.open(QIODevice::ReadOnly))
+    {
+        QTextStream in(&nodesfile);
+        while (!in.atEnd())
+        {
+            QString line = in.readLine();
+            addcity(line);
+        }
+        nodesfile.close();
+    }
+    QFile connectfile(":/files/connections.txt");
+    if(connectfile.open(QIODevice::ReadOnly)){
+        QTextStream in(&connectfile);
+        while (!in.atEnd())
+        {
+            QString node1;
+            QString node2;
+            QString weight;
+            in>>node1;
+            in>>node2;
+            in>>weight;
+            double w= weight.toDouble();
+            connectcities(node1,node2,w);
+        }
+        connectfile.close();
+    }
+}
+graph::~graph() {
+    //write the code of nodes and connections here.
 }
 bool graph::exists(QString name){
     if(my_graph.find(name)==my_graph.end()){
