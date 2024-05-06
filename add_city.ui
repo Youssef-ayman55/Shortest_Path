@@ -92,7 +92,7 @@
     <rect>
      <x>40</x>
      <y>680</y>
-     <width>191</width>
+     <width>321</width>
      <height>91</height>
     </rect>
    </property>
@@ -116,7 +116,7 @@
 </string>
    </property>
    <property name="text">
-    <string>Back</string>
+    <string>Back / Save</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="add_name">

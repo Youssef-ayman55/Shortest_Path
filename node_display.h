@@ -19,6 +19,8 @@ public:
     QGraphicsTextItem * name;
     void setText(QString name);
     node_display * parent;
+    QVector<node_display *> connections;
+    QVector<QGraphicsTextItem *> weights;
     QString na;
     QGraphicsTextItem * weight_with_parent;
     graph * graph_w;

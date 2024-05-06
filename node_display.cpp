@@ -43,6 +43,18 @@ void node_display::move(){
         int weightx = (x() + parent->x())/2;
         int weighty = (y() + parent->y())/2;
         weight_with_parent->setPos(weightx,weighty);
+        for(int i = 0; i < connections.size(); i++){
+            QGraphicsTextItem * temp = new QGraphicsTextItem;
+            temp->setPlainText(QString::number(graph_w->getweight(na, connections.at(i)->na)));
+            scene()->addItem(temp);
+            int weightx = (x() + connections.at(i)->x())/2;
+            int weighty = (y() + connections.at(i)->y())/2;
+            temp->setPos(weightx,weighty);
+            weights.push_back(temp);
+            QPen pen(QColor(60, 54, 51));
+            pen.setWidth(2);
+            scene()->addLine(x() +25,y() + 25,connections.at(i)->x() +25,connections.at(i)->y() +25, pen);
+        }
     }
     xv = 0;
     yv = 0;

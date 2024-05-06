@@ -7,8 +7,9 @@
 #include <QPair>
 #include <QQueue>
 #include <algorithm>
+#include <fstream>
 graph::graph() {
-    QFile nodesfile(":/files/nodes.txt");
+    QFile nodesfile("nodes.txt");
     if (nodesfile.open(QIODevice::ReadOnly))
     {
         QTextStream in(&nodesfile);
@@ -19,7 +20,7 @@ graph::graph() {
         }
         nodesfile.close();
     }
-    QFile connectfile(":/files/connections.txt");
+    QFile connectfile("connections.txt");
     if(connectfile.open(QIODevice::ReadOnly)){
         QTextStream in(&connectfile);
         while (!in.atEnd())
@@ -37,7 +38,7 @@ graph::graph() {
     }
 }
 graph::~graph() {
-    //write the code of nodes and connections here.
+    update_files();
 }
 bool graph::exists(QString name){
     if(my_graph.find(name)==my_graph.end()){
@@ -145,4 +146,26 @@ double graph::getweight(QString name1, QString name2)
         }
     }
     return distance;
+}
+void graph::update_files(){
+    std::ofstream nodesfile;
+    nodesfile.open("nodes.txt", std::ios::trunc | std::ios::out);
+    if (nodesfile.is_open())
+    {
+        for(auto it = my_graph.begin(); it != my_graph.end(); it++){
+            nodesfile << it.key().toStdString() << std::endl;
+        }
+        nodesfile.close();
+    }
+    std::ofstream connectfile;
+    connectfile.open("connections.txt", std::ios::trunc | std::ios::out);
+    if (connectfile.is_open())
+    {
+        for(auto it = my_graph.begin(); it != my_graph.end(); it++){
+            for(int i =0; i <it.value()->size(); i++){
+                connectfile << it.key().toStdString() << " " << it.value()->at(i).first.toStdString() << " " << it.value()->at(i).second << std::endl;
+            }
+        }
+        connectfile.close();
+    }
 }

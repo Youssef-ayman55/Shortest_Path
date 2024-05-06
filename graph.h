@@ -8,11 +8,6 @@
 #include <QFile>
 #include <QTextStream>
 #include <QGraphicsEllipseItem>
-class Node : public QObject, public QGraphicsEllipseItem{
-    Q_OBJECT
-public:
-    QString name;
-};
 class graph
 {
 public:
@@ -26,6 +21,7 @@ public:
     void connectcities(QString name1, QString name2, double weight);
     QVector<QString>* findpath(QString src, QString des);
     QFile data;
+    void update_files();
 };
 
 #endif // GRAPH_H

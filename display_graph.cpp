@@ -54,6 +54,12 @@ display_graph::display_graph(graph * graph_w): graph_w(graph_w), QWidget(nullptr
                     current->radius = current->parent->radius/2;
                 }
                 current->setText(queue.front());
+                for(int i =0; i < vector->size(); i++){
+                    QString tem = vector->at(i)->na;
+                    if(graph_w->getweight(tem, current->na) != -1){
+                        current->connections.push_back(vector->at(i));
+                    }
+                }
                 vector->push_back(current);
                 for(int j =0; j < vector->size() - 1; j++){
                     (*vector)[vector->size() - 1]->repel((*vector)[j]);

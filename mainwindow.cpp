@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete graph_w;
+
 }
 
 void MainWindow::reset()
