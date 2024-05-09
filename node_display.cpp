@@ -37,7 +37,13 @@ void node_display::move(){
     if(parent != nullptr && stationary_count == 500){
         QPen pen(QColor(60, 54, 51));
         pen.setWidth(2);
-        scene()->addLine(x() +25,y() + 25,parent->x() +25,parent->y() +25, pen);
+        double xnorm = (x()-parent->x())/sqrt((x()-parent->x())*(x()-parent->x())+(y()-parent->y())*(y()-parent->y()));
+        int x1 = x()+25 - 25*xnorm;
+        int x2 = parent->x() + 25 +25*xnorm;
+        double ynorm =(y()-parent->y())/sqrt((x()-parent->x())*(x()-parent->x())+(y()-parent->y())*(y()-parent->y()));
+        int y1 =y()+25 - 25*ynorm;
+        int y2 =  parent->y() + 25 +25*ynorm;
+        scene()->addLine(x1,y1,x2,y2,pen);
         weight_with_parent->setPlainText(QString::number(graph_w->getweight(na, parent->na)));
         scene()->addItem(weight_with_parent);
         int weightx = (x() + parent->x())/2;
@@ -53,7 +59,13 @@ void node_display::move(){
             weights.push_back(temp);
             QPen pen(QColor(60, 54, 51));
             pen.setWidth(2);
-            scene()->addLine(x() +25,y() + 25,connections.at(i)->x() +25,connections.at(i)->y() +25, pen);
+            double xnorm = (x()-connections.at(i)->x())/sqrt((x()-connections.at(i)->x())*(x()-connections.at(i)->x())+(y()-connections.at(i)->y())*(y()-connections.at(i)->y()));
+            int x1 = x()+25 - 25*xnorm;
+            int x2 = connections.at(i)->x() + 25 +25*xnorm;
+            double ynorm =(y()-connections.at(i)->y())/sqrt((x()-connections.at(i)->x())*(x()-connections.at(i)->x())+(y()-connections.at(i)->y())*(y()-connections.at(i)->y()));
+            int y1 =y()+25 - 25*ynorm;
+            int y2 = connections.at(i)->y() + 25 +25*ynorm;
+            scene()->addLine(x1,y1,x2,y2,pen);
         }
     }
     xv = 0;
