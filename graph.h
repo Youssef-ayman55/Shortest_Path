@@ -14,6 +14,7 @@ public:
     QMap<QString,QVector<QPair<QString,double>>*> my_graph;
     graph();
     ~graph();
+    void reset();
     bool exists(QString name);
     void addcity(QString name);
     void dcity(QString name);

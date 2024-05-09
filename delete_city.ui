@@ -245,6 +245,66 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="clear">
+   <property name="geometry">
+    <rect>
+     <x>850</x>
+     <y>680</y>
+     <width>301</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bauhaus 93</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> background-color: rgb(224, 204, 190);
+    border-style: solid;
+    color:  rgb(60, 54, 51);
+    border-width: 5px;
+    border-radius: 20px;
+    border-color: rgb(116, 114, 100);
+    font: 48px;
+    padding: 6px;
+</string>
+   </property>
+   <property name="text">
+    <string>Clear Graph</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cleared">
+   <property name="geometry">
+    <rect>
+     <x>850</x>
+     <y>630</y>
+     <width>301</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bauhaus 93</family>
+     <pointsize>18</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:  rgb(60, 54, 51);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -20,6 +20,8 @@ private slots:
     void on_back_to_main_clicked();
     void on_delete_button_clicked();
 
+    void on_clear_clicked();
+
 private:
     Ui::delete_city *ui;
     graph* graph_w;

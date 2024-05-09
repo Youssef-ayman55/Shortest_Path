@@ -39,9 +39,13 @@ graph::graph() {
 }
 graph::~graph() {
     update_files();
+    reset();
+}
+void graph::reset(){
     for(auto it = my_graph.begin(); it!= my_graph.end(); it++){
         delete my_graph[it.key()];
     }
+    my_graph.clear();
 }
 bool graph::exists(QString name){
     if(my_graph.find(name)==my_graph.end()){

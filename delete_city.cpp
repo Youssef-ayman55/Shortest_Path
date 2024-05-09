@@ -40,3 +40,10 @@ void delete_city::on_delete_button_clicked()
     }
 }
 
+
+void delete_city::on_clear_clicked()
+{
+    graph_w->reset();
+    ui->cleared->setText("Graph Cleared!");
+}
+
