@@ -22,6 +22,7 @@ public:
     QVector<node_display *> connections;
     QVector<QGraphicsTextItem *> weights;
     QString na;
+    QTimer * timer;
     QGraphicsTextItem * weight_with_parent;
     graph * graph_w;
     int stationary_count;

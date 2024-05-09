@@ -14,7 +14,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete graph_w;
-
 }
 
 void MainWindow::reset()

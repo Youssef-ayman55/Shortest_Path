@@ -8,7 +8,7 @@ node_display::node_display(graph * graph_w): graph_w(graph_w) {
     phase= 0;
     setRect(0,0,50,50);
     setPos(50,50);
-    QTimer * timer =new QTimer();
+    timer =new QTimer();
     QObject::connect(timer, SIGNAL(timeout()),this, SLOT(move()));
     timer->start(1);
     parent = nullptr;
@@ -75,4 +75,8 @@ void node_display::setText(QString nam){
 node_display::~node_display(){
     delete weight_with_parent;
     delete name;
+    for(int i = 0; i < weights.size(); i++){
+        delete weights[i];
+    }
+    delete timer;
 }
