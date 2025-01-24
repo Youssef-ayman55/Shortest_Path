@@ -9,4 +9,4 @@
 This is a project that implements a graph visualizer that allows the user to add and delete vertices in a graph. It also allows the user to find the shortest path between any two added vertices. The graph displayer works using a repulsion algorithm that ensures that the distance between any two vertices on the screen is not less than a specified threshold.
 
 ## Building the source code
-To run the source code for this project, you have to install [Qt](https://www.qt.io/) 6.6.3 or later.
+To run the source code for this project, you have to install [Qt](https://www.qt.io/product/framework) 6.6.3 or later.
